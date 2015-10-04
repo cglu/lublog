@@ -65,7 +65,7 @@
 					action="/search.html" method="get">
 					<div class="form-group">
 						<input type="text" name="wd" class="form-control col-lg-4"
-							placeholder="Bootstrap" value="">
+							placeholder="search" value="">
 					</div>
 					<button type="submit" class="btn btn-default">搜索</button>
 				</form>
