@@ -10,7 +10,7 @@
 <meta name="author" content="">
 <link rel="icon" href="{{url('favicon.ico')}}">
 
-<title>@section('title')首页 @show</title>
+<title>@section('title') @show-  灵感 - 来自生活的馈赠</title>
 <!-- Bootstrap core CSS -->
 <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -84,18 +84,21 @@
 
 		<div class="row">
 
-			<div class="col-sm-8 blog-main">
-			  @yield('content')
-			</div>
+			<div class="col-sm-8 blog-main">@yield('content')</div>
 			<!-- /.blog-main -->
 			<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
 				@section('subject_des')
 				<div class="sidebar-module sidebar-module-inset">
-					<h4>最新文章</h4>
-					<p>文章一览(5条)</p>
+					<h4>联系博主</h4>
+					<p>
+						QQ：1055429046</br>Email:shouhuni.xue@gmail.com
+					</p>
 				</div>
-				@show @include('archives') @include('elsewhere') <a
-					href="{{url('/admin/article')}}">=>登陆到后台</a>
+				@show @include('archives') @include('elsewhere')
+
+				<div class="sidebar-module">
+					<a href="{{url('/admin/article')}}">=>登陆到后台</a>
+				</div>
 			</div>
 			<!-- /.blog-sidebar -->
 
@@ -127,5 +130,6 @@
 		src="{{url('ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js')}}"></script>
 
 	<script>hljs.initHighlightingOnLoad();</script>
+
 </body>
 </html>
