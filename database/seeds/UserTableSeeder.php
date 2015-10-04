@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\User;
+use lublog\User;
 class UserTableSeeder extends Seeder
 {
 

@@ -40,9 +40,9 @@ if ($articles->currentPage() == 1) {
 }
 
 ?>">Previous</a></li>
-				 
-				<?php  echo $articles->lastPage()."    ".$articles->currentPage();?>
-						<li><a
+
+
+		<li><a
 			href="<?php
 if ($articles->currentPage() == $articles->lastPage()) {
     echo $articles->url(1);

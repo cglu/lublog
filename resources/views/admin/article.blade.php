@@ -30,8 +30,8 @@ foreach ($articles as $article) {
     echo "<td><a href=\"".url('/article/'.$article->id)."\">{$article->title}</a>({$article->created_at})</td>
        <td>0</td>
        <td>0</td>
-       <td><a href=\"#\" class=\"btn btn-info\" role=\"button\">编辑</a>
-      <a href=\"#\" class=\"btn btn-info\" role=\"button\">删除</a></td></tr>";
+       <td><a href=\"".url("/admin/article/{$article->id}/edit")."\" class=\"btn btn-info\" role=\"button\">编辑</a>
+      <a href=\"".url('/admin/article/del/'.$article->id)."\" class=\"btn btn-info\" role=\"button\">删除</a></td></tr>";
 }
 ?>
 	</tbody>

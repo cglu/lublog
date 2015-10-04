@@ -8,7 +8,7 @@ use lublog\Article;
 
 class ArticleController extends Controller
 {
-
+   
     /**
      * Display a listing of the resource.
      *
@@ -48,12 +48,12 @@ class ArticleController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'display' => 'required',
+            'description' => 'required',
             'content' => 'required'
         ]);
         $article = Article::create($request->only([
             'title',
-            'display',
+            'description',
             'content'
         ]));
         if ($article) {
@@ -71,7 +71,7 @@ class ArticleController extends Controller
      * @return Response
      */
     public function show($id)
-    { 
+    {
         $article = Article::find($id);
         if ($article) {
             return view('article_detailed')->with('article', $article);
@@ -86,18 +86,34 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::find($id);
+        return view('admin.edit_article')->with('article', $article);
     }
-
+  
     /**
      * Update the specified resource in storage.
      *
      * @param int $id            
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'content' => 'required'
+        ]);
+        $article = Article::where('id', $id)->update($request->only([
+            'title',
+            'description',
+            'content'
+        ]));
+        if ($article) {
+            $message = "修改文章成功";
+        } else {
+            $message = "修改文章失败";
+        }
+        return redirect('/admin/article')->with('message', $message);
     }
 
     /**
@@ -108,6 +124,11 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Article::destroy($id)) {
+            $message = "删除文章成功";
+        } else {
+            $message = "删除文章失败";
+        }
+        return redirect('/admin/article')->with('message', $message);
     }
 }

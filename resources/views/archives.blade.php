@@ -1,5 +1,5 @@
    <div class="sidebar-module">
-            <h4>Archives</h4>
+            <h4>归档(未实现)</h4>
             <ol class="list-unstyled">
               <li><a href="#">March 2014</a></li>
               <li><a href="#">February 2014</a></li>

@@ -8,16 +8,17 @@
 	background-color: #428bca;
 	border-color: #428bca;
 }
- .navbar {
-	    border-radius:0px !important;
+.navbar {
+	border-radius: 0px !important;
 }
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
 	background-color: #428bca;
 }
-.read-article{
-	 font-size: 13px;
+.read-article {
+	font-size: 13px;
 	text-align: right;
 }
+
 /*
  * Globals
  */
@@ -146,7 +147,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 .blog-post {
 	margin-bottom: 30px;
 }
-.blog-post-title  a{
+.blog-post-title  a {
 	margin-bottom: 5px;
 	font-size: 28px;
 	color: #337AB7;
@@ -161,12 +162,13 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
  */
 
 .blog-footer {
+	margin-top:50px;
 	padding: 10px 0;
 	color: #999;
 	text-align: center;
 	background-color: #f9f9f9;
 	border-top: 1px solid #e5e5e5;
-	font-size:12px;
+	font-size: 12px;
 }
 .blog-footer p:last-child {
 	margin-bottom: 0;
