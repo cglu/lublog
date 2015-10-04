@@ -58,6 +58,7 @@
 
 					<li><a class="blog-nav-item" href="#">MYSQL</a></li>
 					<li><a class="blog-nav-item" href="#">个人随笔</a></li>
+					<li><a class="blog-nav-item" href="{{url('/mboard')}}">留言板</a></li>
 					<li><a class="blog-nav-item" href="{{url('/about')}}">关于</a></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search"
