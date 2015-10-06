@@ -5,10 +5,11 @@ use lublog\Http\Requests;
 use lublog\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use lublog\Article;
+use lublog\Categories;
 
 class ArticleController extends Controller
 {
-   
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +17,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::orderBy('created_at', 'desc')->paginate();
+        $articles = Article::with('categories')->orderBy('articles.created_at', 'desc')->paginate();
+        
         return view('admin.article')->with('articles', $articles);
     }
 
@@ -36,7 +38,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('admin.create_article');
+        $categories_list = Categories::get();
+        return view('admin.create_article')->with('categories_list', $categories_list);
     }
 
     /**
@@ -54,7 +57,8 @@ class ArticleController extends Controller
         $article = Article::create($request->only([
             'title',
             'description',
-            'content'
+            'content',
+            'category_id'
         ]));
         if ($article) {
             $message = "添加文章成功";
@@ -87,9 +91,13 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $article = Article::find($id);
-        return view('admin.edit_article')->with('article', $article);
+        $categories_list = Categories::get();
+        return view('admin.edit_article')->with([
+            'article' => $article,       
+            'categories_list' => $categories_list
+        ]);
     }
-  
+
     /**
      * Update the specified resource in storage.
      *
@@ -106,7 +114,8 @@ class ArticleController extends Controller
         $article = Article::where('id', $id)->update($request->only([
             'title',
             'description',
-            'content'
+            'content',
+            'category_id'
         ]));
         if ($article) {
             $message = "修改文章成功";

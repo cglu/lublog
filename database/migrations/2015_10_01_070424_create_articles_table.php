@@ -14,8 +14,10 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id');
-            
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories');
             $table->string('title');
             $table->text('description');
             $table->mediumText('content');

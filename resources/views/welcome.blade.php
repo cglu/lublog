@@ -9,7 +9,7 @@ foreach ($articles as $article) {
 		</a>
 	</h2>
 	<p class="blog-post-meta">
-		{{date('Y-m-d',strtotime($article->created_at))}} <a href="#">Mark</a>
+		{{date('Y-m-d',strtotime($article->created_at))}} <a href="#">{{$article->categories->name}}</a>
 	</p>
 					
 					<?php
