@@ -10,6 +10,7 @@ class ArticleProcess
     {
         return explode(self::PAGE_BREAK_CONVERT, $body)[0];
     }
+    
 }
 
 ?>
