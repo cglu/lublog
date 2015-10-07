@@ -96,8 +96,9 @@
 						QQ：1055429046</br>Email:shouhuni.xue@gmail.com
 					</p>
 				</div>
-				@show @include('archives') @include('elsewhere')
-				@include('categories')
+				@show 
+				@include('categories') @include('archives') @include('elsewhere')
+				
 
 				<div class="sidebar-module">
 					<a href="{{url('/admin/article')}}">=>登陆到后台</a>
