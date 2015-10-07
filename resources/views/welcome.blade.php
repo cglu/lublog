@@ -9,7 +9,8 @@ foreach ($articles as $article) {
 		</a>
 	</h2>
 	<p class="blog-post-meta">
-		{{date('Y-m-d',strtotime($article->created_at))}} <a href="#">{{$article->categories->name}}</a>
+		{{date('Y-m-d',strtotime($article->created_at))}} <a
+			href="{{url('/search/categories?id='.$article->category_id)}}">{{$article->categories->name}}</a>
 	</p>
 					
 					<?php
@@ -25,31 +26,39 @@ foreach ($articles as $article) {
 <!-- /.blog-post -->
 <?php
 }
-
 ?>
 <nav>
 	<ul class="pager">
 		<li><a //这部分以后通过重写Laravel分页模版实现
 			href="<?php
+$url = "";
 if ($articles->currentPage() == 1) {
     
-    echo $articles->url($articles->lastPage());
+    $url = $articles->url($articles->lastPage());
 } else {
     $prevPage = $articles->currentPage() - 1;
-    echo $articles->url($prevPage);
+    $url = $articles->url($prevPage);
 }
-
+if (isset($search_param)) {
+    $url .= $search_param;
+}
+echo $url;
 ?>">Previous</a></li>
 
 
 		<li><a
 			href="<?php
+$url = "";
 if ($articles->currentPage() == $articles->lastPage()) {
-    echo $articles->url(1);
+    $url = $articles->url(1);
 } else {
     
-    echo $articles->nextPageUrl();
+    $url = $articles->nextPageUrl();
 }
+if (isset($search_param)) {
+    $url .= $search_param;
+}
+echo $url;
 ?>">Next</a></li>
 	</ul>
 </nav>

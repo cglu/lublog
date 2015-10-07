@@ -10,7 +10,7 @@
 <meta name="author" content="">
 <link rel="icon" href="{{url('favicon.ico')}}">
 
-<title>@section('title') @show-  灵感 - 来自生活的馈赠</title>
+<title>@section('title') @show- 灵感 - 来自生活的馈赠</title>
 <!-- Bootstrap core CSS -->
 <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -53,11 +53,12 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a class="blog-nav-item active"
 						href="{{url('/')}}">首页</a></li>
-					<li><a class="blog-nav-item" href="#">PHP</a></li>
-
-
-					<li><a class="blog-nav-item" href="#">MYSQL</a></li>
-					<li><a class="blog-nav-item" href="#">个人随笔</a></li>
+					<li><a class="blog-nav-item"
+						href="{{url('/search/categories?id=2')}}">PHP</a></li>
+					<li><a class="blog-nav-item"
+						href="{{url('/search/categories?id=3')}}">MYSQL</a></li>
+					<li><a class="blog-nav-item"
+						href="{{url('/search/categories?id=4')}}">个人随笔</a></li>
 					<li><a class="blog-nav-item" href="{{url('/mboard')}}">留言板</a></li>
 					<li><a class="blog-nav-item" href="{{url('/about')}}">关于</a></li>
 				</ul>
@@ -96,6 +97,7 @@
 					</p>
 				</div>
 				@show @include('archives') @include('elsewhere')
+				@include('categories')
 
 				<div class="sidebar-module">
 					<a href="{{url('/admin/article')}}">=>登陆到后台</a>

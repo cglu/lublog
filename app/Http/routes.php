@@ -10,7 +10,7 @@ use lublog\Article;
  * | and give it the controller to call when that URI is requested.
  * |
  */
-Route::get('/', 'ArticleController@index2');
+Route::get('/', 'ArticleController@welcome');
 Route::get('article/{id}', 'ArticleController@show');
 Route::get('/about', function () {
     $article = Article::where('title', '=', '关于')->first();
@@ -21,7 +21,9 @@ Route::get('/mboard', function () {
     return view('article_detailed')->with('article', $article);
 });
 Route::controller('auth', 'Auth\AuthController');
-
+Route::group([  'prefix' => 'search'],function(){
+    Route::get('categories', 'SearchController@searchArticleByCategories');
+});
 Route::group([
     'middleware' => [
         'auth'

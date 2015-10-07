@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use lublog\Categories;
@@ -18,6 +17,15 @@ class CategoriesTableSeeder extends Seeder
         DB::table('categories')->delete();
         Categories::create([
             'name' => '未分类'
+        ]);
+        Categories::create([
+            'name' => 'PHP'
+        ]);
+        Categories::create([
+            'name' => 'Mysql'
+        ]);
+        Categories::create([
+            'name' => '个人随笔'
         ]);
     }
 }

@@ -6,6 +6,7 @@ use lublog\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use lublog\Article;
 use lublog\Categories;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -25,8 +26,10 @@ class ArticleController extends Controller
     /**
      * 用于博客主页文章的显示
      */
-    public function index2()
+    public function welcome()
     {
+      
+        
         $articles = Article::orderBy('created_at', 'desc')->paginate(10);
         return view('welcome')->with('articles', $articles);
     }
