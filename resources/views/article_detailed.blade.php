@@ -12,7 +12,7 @@
 	{!! $article->content !!}
 </div>
 <hr>
-<div class="ds-share" data-thread-key="" data-title="{{$article->title}}" data-images="" data-content="{{$article->content}}" data-url="{{url('/article/'.$article->id)}}">
+<div class="ds-share" data-thread-key="" data-title="{{$article->title}}" data-images="{{asset('/images/avatar.jpg')}}" data-content="{{$article->content}}" data-url="{{url('/article/'.$article->id)}}">
       <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
       	

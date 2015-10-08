@@ -23,16 +23,7 @@ class ArticleController extends Controller
         return view('admin.article')->with('articles', $articles);
     }
 
-    /**
-     * 用于博客主页文章的显示
-     */
-    public function welcome()
-    {
-      
-        
-        $articles = Article::orderBy('created_at', 'desc')->paginate(10);
-        return view('welcome')->with('articles', $articles);
-    }
+    
 
     /**
      * Show the form for creating a new resource.

@@ -95,6 +95,7 @@
 					<p>
 						QQ：1055429046</br>Email:shouhuni.xue@gmail.com
 					</p>
+					<p><a class="rss" title="订阅" href="{{url('/feed')}}" target="_blank"></a></p>
 				</div>
 				@show 
 				@include('categories') @include('archives') @include('elsewhere')

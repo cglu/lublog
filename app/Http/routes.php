@@ -10,16 +10,15 @@ use lublog\Article;
  * | and give it the controller to call when that URI is requested.
  * |
  */
-Route::get('/', 'ArticleController@welcome');
+Route::get('/', 'PageController@welcome');
+Route::get('/about','PageController@about');
+Route::get('/mboard', 'PageController@mboard');
+Route::get('/feed', 'PageController@feed');
+
+
+
 Route::get('article/{id}', 'ArticleController@show');
-Route::get('/about', function () {
-    $article = Article::where('title', '=', '关于')->first();
-    return view('article_detailed')->with('article', $article);
-});
-Route::get('/mboard', function () {
-    $article = Article::where('title', '=', '留言板')->first();
-    return view('article_detailed')->with('article', $article);
-});
+
 Route::controller('auth', 'Auth\AuthController');
 Route::group([  'prefix' => 'search'],function(){
     Route::get('categories', 'SearchController@searchArticleByCategories');

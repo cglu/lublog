@@ -2,7 +2,8 @@
   "name" : "A00-lublog",
   "description" : "The Laravel Framework.",
   "require" : {
-    "laravel/framework" : "5.0.*"
+    "laravel/framework" : "5.0.*",
+    "hyancat/larss" : "^1.3"
   },
   "require-dev" : {
     "phpunit/phpunit" : "~4.0",
