@@ -2,9 +2,12 @@
   @section('title'){{$article->title}}@endsection
   @section('keywords'){{$article->keywords}}@endsection
   @section('description')<?php
-    $body = $article->content;
-    $summary = lublog\Lublog\ArticleProcess::getSummary($body);
-    echo trim(strip_tags($summary));?>@endsection
+$body = $article->content;
+$summary = lublog\Lublog\ArticleProcess::getSummary($body);
+$summary = trim(strip_tags($summary));
+$summary = str_replace("\n", "", $summary);
+echo $summary;
+?>@endsection
  @section('content')
 <div class="blog-post">
 	<h2 class="blog-post-title">
