@@ -18,4 +18,12 @@ class SearchController extends Controller
             'search_param'=>'&id='.$id
         ]);
     }
+    public function searchArticleByDate(Request $request){
+        $date = $request->input('date');
+        $articles=Article::whereRaw('DATE_FORMAT(articles.created_at, "%Y-%m")=?',[$date])->orderBy('articles.created_at', 'desc')->paginate();
+        return view('welcome')->with([
+            'articles' => $articles,
+            'search_param'=>'&date='.$date
+        ]);
+    }
 }

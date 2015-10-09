@@ -21,6 +21,7 @@ class ArticleController extends Controller
         $articles = Article::with('categories')->orderBy('articles.created_at', 'desc')->paginate();
         
         return view('admin.article')->with('articles', $articles);
+       
     }
 
     

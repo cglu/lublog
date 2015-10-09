@@ -1,17 +1,15 @@
-   <div class="sidebar-module">
-            <h4>归档(未实现)</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">March 2014</a></li>
-              <li><a href="#">February 2014</a></li>
-              <li><a href="#">January 2014</a></li>
-              <li><a href="#">December 2013</a></li>
-              <li><a href="#">November 2013</a></li>
-              <li><a href="#">October 2013</a></li>
-              <li><a href="#">September 2013</a></li>
-              <li><a href="#">August 2013</a></li>
-              <li><a href="#">July 2013</a></li>
-              <li><a href="#">June 2013</a></li>
-              <li><a href="#">May 2013</a></li>
-              <li><a href="#">April 2013</a></li>
-            </ol>
-          </div>
+<?php
+use Illuminate\Support\Facades\DB;
+$sql = 'select *,DATE_FORMAT(articles.created_at, "%Y-%m")as "create_date",
+      COUNT(*) as "count" from articles GROUP BY create_date ;';
+$results = DB::select($sql);
+?>
+<div class="sidebar-module">
+	<h4>归档</h4>
+	<ol class="list-unstyled">
+
+		@foreach ($results as $record)
+		<li><a href="{{url('/search/archive?date='.$record->create_date)}}">{{date('Y年m月',strtotime($record->create_date))}}({{$record->count}})</a></li>
+		@endforeach
+	</ol>
+</div>
