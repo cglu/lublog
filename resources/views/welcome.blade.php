@@ -44,12 +44,10 @@ if (isset($search_param)) {
 }
 echo $url;
 ?>">Previous</a></li>
-
-
 		<li><a
 			href="<?php
 $url = "";
-if ($articles->currentPage() == $articles->lastPage()) {
+if ($articles->currentPage() == $articles->lastPage() || $articles->total() == 0) {
     $url = $articles->url(1);
 } else {
     
