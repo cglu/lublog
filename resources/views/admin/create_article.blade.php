@@ -13,19 +13,7 @@
 			value="{{old('description')}}"> <span id="helpBlock"
 			class="help-block"><?php echo $errors->first('description');?></span>
 	</div>
-	<div class="form-group">
-		<label for="exampleInputPassword1">文章文类</label> <select
-			class="form-control" name="category_id">
-	<?php
-foreach ($categories_list as $categories) {
-    echo "<option value=\"{$categories->id}\"".
-     (old('category_id')==$categories->id?"selected='1'":"")
-    .">{$categories->name}</option>";
-}
-?>
-   
-</select> <span id="helpBlock" class="help-block"><?php echo $errors->first('category_id');?></span>
-	</div>
+
 
 	<div class="form-group">
 		<label for="exampleInputPassword1">内容</label>
@@ -35,6 +23,22 @@ foreach ($categories_list as $categories) {
 
 	</div>
 
+	<div class="form-group">
+		<label for="exampleInputPassword1">文章文类</label> <select
+			class="form-control" name="category_id">
+	<?php
+foreach ($categories_list as $categories) {
+    echo "<option value=\"{$categories->id}\"" . (old('category_id') == $categories->id ? "selected='1'" : "") . ">{$categories->name}</option>";
+}
+?>
+   
+</select> <span id="helpBlock" class="help-block"><?php echo $errors->first('category_id');?></span>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword1">关键字</label> <input type="text"
+			class="form-control" placeholder="" name="keywords"
+			value="{{old('keywords')}}"> <span id="helpBlock" class="help-block"><?php echo $errors->first('keywords');?></span>
+	</div>
 
 
 	<button type="submit" class="btn btn-default">Submit</button>

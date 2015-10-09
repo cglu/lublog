@@ -21,6 +21,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->mediumText('content');
+            $table->string('keywords');
             
             // $table->string('keywords');
             $table->timestamps();

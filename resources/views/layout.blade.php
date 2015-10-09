@@ -6,11 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-<meta name="description" content="">
-<meta name="author" content="">
+<meta name="description" content="@section('description')灵感 - 来自生活的馈赠 @show">
+<meta name="author" content="luhu">
+<meta name="keywords" content="@section('keywords')luhu,luhu.in,php,开发,学习,blog,博客@show" />
 <link rel="icon" href="{{url('favicon.ico')}}">
 
-<title>@section('title') @show- 灵感 - 来自生活的馈赠</title>
+<title>@section('title')@show- 灵感 - 来自生活的馈赠</title>
 <!-- Bootstrap core CSS -->
 <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -128,6 +129,7 @@
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	
 	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="{{asset('js/ie10-viewport-bug-workaround.js')}}"></script>
@@ -135,6 +137,26 @@
 		src="{{url('ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js')}}"></script>
 
 	<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+// create the back to top button
+$('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
 
+var amountScrolled = 200;
+
+$(window).scroll(function() {
+	if ($(window).scrollTop() > amountScrolled) {
+		$('a.back-to-top').fadeIn('slow');
+	} else {
+		$('a.back-to-top').fadeOut('slow');
+	}
+});
+
+$('a.back-to-top, a.simple-back-to-top').click(function() {
+	$('body').animate({
+		scrollTop: 0
+	}, 'fast');
+	return false;
+});
+</script>
 </body>
 </html>

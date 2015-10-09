@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model {
 
 	//
-    protected $fillable = ['title', 'category_id', 'description','content'];
+    protected $fillable = ['title', 'category_id', 'description','content', 'keywords'];
 
     public function categories()
     {

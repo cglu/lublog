@@ -52,7 +52,8 @@ class ArticleController extends Controller
             'title',
             'description',
             'content',
-            'category_id'
+            'category_id',
+            'keywords'
         ]));
         if ($article) {
             $message = "添加文章成功";
@@ -109,7 +110,8 @@ class ArticleController extends Controller
             'title',
             'description',
             'content',
-            'category_id'
+            'category_id',
+            'keywords'
         ]));
         if ($article) {
             $message = "修改文章成功";
