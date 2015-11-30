@@ -2,11 +2,7 @@
   @section('title'){{$article->title}}@endsection
   @section('keywords'){{$article->keywords}}@endsection
   @section('description')<?php
-$body = $article->content;
-$summary = lublog\Lublog\ArticleProcess::getSummary($body);
-$summary = trim(strip_tags($summary));
-$summary = str_replace("\n", "", $summary);
-echo $summary;
+echo $article->description;
 ?>@endsection
  @section('content')
 <div class="blog-post">
@@ -21,7 +17,7 @@ echo $summary;
 	{!! $article->content !!}
 </div>
 <hr>
-<div class="ds-share" data-thread-key=""
+<div class="ds-share" data-thread-key="" 
 	data-title="{{$article->title}}"
 	data-images="{{asset('/images/avatar.jpg')}}"
 	data-content="{{$article->content}}"
@@ -68,5 +64,8 @@ var duoshuoQuery = {short_name:"lublog"};
 	text-align: right !important;
 	display: none !important;
 }
+
+ 
+
 </style>
 @endsection
