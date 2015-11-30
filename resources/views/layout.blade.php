@@ -158,5 +158,14 @@ $('a.back-to-top, a.simple-back-to-top').click(function() {
 	return false;
 });
 </script>
+<style>
+
+.container iframe {
+		width:100%;
+		margin:0 0 1em;
+		border:0;
+	}
+
+</style>
 </body>
 </html>
