@@ -1,0 +1,3 @@
+#! /bin/bash
+filename=`date +%Y%m%d`
+mysqldump lublog -u root -p440cec933b|gzip>/mysqlbackup/lublog_$filename.gz
