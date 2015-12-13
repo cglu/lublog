@@ -1,0 +1,4 @@
+ <?php $__env->startSection('title'); ?> 关于 <?php $__env->stopSection(); ?>
+<?php $__env->startSection('subject_des'); ?> <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('article_detailed', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

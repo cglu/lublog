@@ -5,6 +5,7 @@ use lublog\Http\Requests;
 use lublog\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use lublog\Article;
+use Illuminate\Support\Facades\Session;
 
 class SearchController extends Controller
 {
@@ -25,5 +26,16 @@ class SearchController extends Controller
             'articles' => $articles,
             'search_param'=>'&date='.$date
         ]);
+    }
+    public function searchAriticleByTitle(Request $request){
+        $title=$request->input('title');
+        Session::flash('search_title', $title);
+        $articles=Article::whereRaw('title like ?',["%$title%"])->orderBy('created_at','desc')->paginate();
+              return view('welcome')->with([
+            'articles' => $articles,
+            'search_param'=>'&title='.$title
+             
+        ]);
+        
     }
 }

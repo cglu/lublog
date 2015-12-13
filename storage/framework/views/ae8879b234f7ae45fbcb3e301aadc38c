@@ -1,16 +1,16 @@
-  @extends('layout')
-@section('content')		 
+  
+<?php $__env->startSection('content'); ?>		 
 <?php
 foreach ($articles as $article) {
     ?>
 <div class="blog-post">
 	<h2 class="blog-post-title">
-		<a href="{{url('article/'.$article->id)}}"> <strong>{{$article->title}}</strong>
+		<a href="<?php echo e(url('article/'.$article->id)); ?>"> <strong><?php echo e($article->title); ?></strong>
 		</a>
 	</h2>
 	<p class="blog-post-meta">
-		{{date('Y-m-d',strtotime($article->created_at))}} <a
-			href="{{url('/search/categories?id='.$article->category_id)}}">{{$article->categories->name}}</a>
+		<?php echo e(date('Y-m-d',strtotime($article->created_at))); ?> <a
+			href="<?php echo e(url('/search/categories?id='.$article->category_id)); ?>"><?php echo e($article->categories->name); ?></a>
 	</p>
 					
 					<?php
@@ -19,7 +19,7 @@ foreach ($articles as $article) {
     echo $summary;
     ?> 
    <p class="read-article">
-		<a href="{{url('article/'.$article->id)}}">点击阅读全文</a>
+		<a href="<?php echo e(url('article/'.$article->id)); ?>">点击阅读全文</a>
 	</p>
 </div>
 <hr />
@@ -61,5 +61,7 @@ echo $url;
 ?>>Next</a></li>
 	</ul>
 </nav>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

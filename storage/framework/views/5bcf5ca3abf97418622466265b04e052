@@ -10,26 +10,26 @@ use Illuminate\Support\Facades\Session;
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
 <meta name="description"
-	content="@section('description')灵感 - 来自生活的馈赠 @show">
+	content="<?php $__env->startSection('description'); ?>灵感 - 来自生活的馈赠 <?php echo $__env->yieldSection(); ?>">
 <meta name="author" content="luhu">
 <meta name="keywords"
-	content="@section('keywords')luhu,luhu.in,php,开发,学习,blog,博客@show" />
-<link rel="icon" href="{{url('favicon.ico')}}">
+	content="<?php $__env->startSection('keywords'); ?>luhu,luhu.in,php,开发,学习,blog,博客<?php echo $__env->yieldSection(); ?>" />
+<link rel="icon" href="<?php echo e(url('favicon.ico')); ?>">
 
-<title>@section('title')@show- 灵感 - 来自生活的馈赠</title>
+<title><?php $__env->startSection('title'); ?><?php echo $__env->yieldSection(); ?>- 灵感 - 来自生活的馈赠</title>
 <!-- Bootstrap core CSS -->
 <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="{{asset('/css/blog.css')}}" rel="stylesheet">
+<link href="<?php echo e(asset('/css/blog.css')); ?>" rel="stylesheet">
 <link rel="stylesheet"
-	href="{{url('ckeditor/plugins/codesnippet/lib/highlight/styles/pojoaque.css')}}">
+	href="<?php echo e(url('ckeditor/plugins/codesnippet/lib/highlight/styles/pojoaque.css')); ?>">
 
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script src="{{asset('/js/ie-emulation-modes-warning.js')}}"></script>
+<script src="<?php echo e(asset('/js/ie-emulation-modes-warning.js')); ?>"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -50,7 +50,7 @@ use Illuminate\Support\Facades\Session;
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{url('/')}}">LuBlog</a>
+				<a class="navbar-brand" href="<?php echo e(url('/')); ?>">LuBlog</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,15 +58,15 @@ use Illuminate\Support\Facades\Session;
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a class="blog-nav-item active"
-						href="{{url('/')}}">首页</a></li>
+						href="<?php echo e(url('/')); ?>">首页</a></li>
 					<li><a class="blog-nav-item"
-						href="{{url('/search/categories?id=2')}}">PHP</a></li>
+						href="<?php echo e(url('/search/categories?id=2')); ?>">PHP</a></li>
 					<li><a class="blog-nav-item"
-						href="{{url('/search/categories?id=3')}}">MYSQL</a></li>
+						href="<?php echo e(url('/search/categories?id=3')); ?>">MYSQL</a></li>
 					<li><a class="blog-nav-item"
-						href="{{url('/search/categories?id=4')}}">个人随笔</a></li>
-					<li><a class="blog-nav-item" href="{{url('/mboard')}}">留言板</a></li>
-					<li><a class="blog-nav-item" href="{{url('/about')}}">关于</a></li>
+						href="<?php echo e(url('/search/categories?id=4')); ?>">个人随笔</a></li>
+					<li><a class="blog-nav-item" href="<?php echo e(url('/mboard')); ?>">留言板</a></li>
+					<li><a class="blog-nav-item" href="<?php echo e(url('/about')); ?>">关于</a></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search"
 					action="http://luhu.in/search/title" method="get">
@@ -97,25 +97,25 @@ use Illuminate\Support\Facades\Session;
 
 		<div class="row">
 
-			<div class="col-sm-8 blog-main">@yield('content')</div>
+			<div class="col-sm-8 blog-main"><?php echo $__env->yieldContent('content'); ?></div>
 			<!-- /.blog-main -->
 			<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-				@section('subject_des')
+				<?php $__env->startSection('subject_des'); ?>
 				<div class="sidebar-module sidebar-module-inset">
 					<h4>联系博主</h4>
 					<p>
 						QQ：1055429046</br>Email:shouhuni.xue@gmail.com
 					</p>
 					<p>
-						<a class="rss" title="订阅" href="{{url('/feed')}}" target="_blank"></a>
+						<a class="rss" title="订阅" href="<?php echo e(url('/feed')); ?>" target="_blank"></a>
 					</p>
 				</div>
-				@show @include('categories') @include('archives')
-				@include('elsewhere')
+				<?php echo $__env->yieldSection(); ?> <?php echo $__env->make('categories', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> <?php echo $__env->make('archives', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				<?php echo $__env->make('elsewhere', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 
 				<div class="sidebar-module">
-					<a href="{{url('/admin/article')}}">=>登陆到后台</a>
+					<a href="<?php echo e(url('/admin/article')); ?>">=>登陆到后台</a>
 				</div>
 
 
@@ -146,9 +146,9 @@ use Illuminate\Support\Facades\Session;
 
 	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="{{asset('js/ie10-viewport-bug-workaround.js')}}"></script>
+	<script src="<?php echo e(asset('js/ie10-viewport-bug-workaround.js')); ?>"></script>
 	<script
-		src="{{url('ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js')}}"></script>
+		src="<?php echo e(url('ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js')); ?>"></script>
 
 	<script>hljs.initHighlightingOnLoad();</script>
 	<script type="text/javascript">
