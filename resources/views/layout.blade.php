@@ -110,10 +110,8 @@ use Illuminate\Support\Facades\Session;
 						<a class="rss" title="订阅" href="{{url('/feed')}}" target="_blank"></a>
 					</p>
 				</div>
-				@show @include('categories') @include('archives')
+				@show @include('categories') @include('archives') @include('news')
 				@include('elsewhere')
-
-
 				<div class="sidebar-module">
 					<a href="{{url('/admin/article')}}">=>登陆到后台</a>
 				</div>
