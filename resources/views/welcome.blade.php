@@ -39,9 +39,12 @@ if ($articles->currentPage() == 1) {
     $prevPage = $articles->currentPage() - 1;
     $url = $articles->url($prevPage);
 }
-if (!empty($url)&&isset($search_param)) {
+if (isset($search_param)) {
     $url .= $search_param;
-    $url=sprintf("href='%s'",$url);
+    
+}
+if (!empty($url)) {
+   $url=sprintf("href='%s'",$url);
 }
 echo $url;
 ?>>Previous</a></li>
@@ -52,10 +55,13 @@ if ($articles->currentPage() == $articles->lastPage() || $articles->total() == 0
     //$url = $articles->url(1);
 } else {
     $url = $articles->nextPageUrl();
+    
 }
-if (!empty($url)&&isset($search_param)) {
+if (isset($search_param)) {
     $url .= $search_param;
-    $url=sprintf("href='%s'",$url);
+}
+if (!empty($url)) {
+    $url=sprintf("href=%s",$url);
 }
 echo $url;
 ?>>Next</a></li>
