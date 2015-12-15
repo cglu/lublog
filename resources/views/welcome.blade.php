@@ -27,45 +27,7 @@ foreach ($articles as $article) {
 <?php
 }
 ?>
-<nav>
-	<ul class="pager">
-		<li><a //这部分以后通过重写Laravel分页模版实现
-			<?php
-$url = "";
-if ($articles->currentPage() == 1) {
-    
-  //  $url = $articles->url($articles->lastPage());
-} else {
-    $prevPage = $articles->currentPage() - 1;
-    $url = $articles->url($prevPage);
-}
-if (isset($search_param)) {
-    $url .= $search_param;
-    
-}
-if (!empty($url)) {
-   $url=sprintf("href='%s'",$url);
-}
-echo $url;
-?>>Previous</a></li>
-		<li><a
-			<?php
-$url = "";
-if ($articles->currentPage() == $articles->lastPage() || $articles->total() == 0) {
-    //$url = $articles->url(1);
-} else {
-    $url = $articles->nextPageUrl();
-    
-}
-if (isset($search_param)) {
-    $url .= $search_param;
-}
-if (!empty($url)) {
-    $url=sprintf("href=%s",$url);
-}
-echo $url;
-?>>Next</a></li>
-	</ul>
-</nav>
+
+<?php echo $articles->render(); ?>
 @endsection
 
