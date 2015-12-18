@@ -24,6 +24,7 @@
 
 5.php artion db:seed
 
+6.使用了redis作为缓存系统。
 
 服务器代码更新:cmd下执行./sync.sh
 
