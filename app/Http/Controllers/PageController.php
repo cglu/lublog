@@ -5,6 +5,10 @@ use lublog\Http\Requests;
 use lublog\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use lublog\Article;
+use Illuminate\Support\Facades\Redis;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class PageController extends Controller
 {
@@ -14,7 +18,15 @@ class PageController extends Controller
      */
     public function welcome()
     {
-        $articles = Article::orderBy('created_at', 'desc')->paginate(10);
+        if (Cache::has('welcome.articles')) {
+            Log::info("从缓存中取得数据.");
+            $articles = Cache::get('welcome.articles');
+        } else {
+            Log::info("缓存中没有数据，从数据取得数据，并放入缓存中.");
+            $articles = Article::orderBy('created_at', 'desc')->paginate();
+            $expiresAt = Carbon::now()->addMinute(30);
+            Cache::put('welcome.articles', $articles, $expiresAt);
+        } 
         return view('welcome')->with('articles', $articles);
     }
 
@@ -26,6 +38,7 @@ class PageController extends Controller
         $article = Article::where('title', '=', '留言板')->first();
         return view('article_detailed')->with('article', $article);
     }
+
     /**
      * 关于
      */
@@ -34,6 +47,7 @@ class PageController extends Controller
         $article = Article::where('title', '=', '关于')->first();
         return view('article_detailed')->with('article', $article);
     }
+
     /**
      * rss
      */
@@ -49,7 +63,7 @@ class PageController extends Controller
                 'link' => url('/')
             ])->withImage([
                 
-                'url' =>asset('/images/avatar.jpg'),
+                'url' => asset('/images/avatar.jpg'),
                 'title' => '头像',
                 'link' => url('/')
             ]);

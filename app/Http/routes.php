@@ -10,6 +10,7 @@ use lublog\Article;
  * | and give it the controller to call when that URI is requested.
  * |
  */
+
 // 基础功能
 Route::get('/', 'PageController@welcome');
 

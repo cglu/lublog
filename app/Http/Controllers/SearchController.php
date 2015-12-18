@@ -16,7 +16,7 @@ class SearchController extends Controller
         $articles = Article::where('category_id', '=', $id)->orderBy('articles.created_at', 'desc')->paginate();
         return view('welcome')->with([
             'articles' => $articles,
-            'search_param'=>'&id='.$id
+           'search_data'=>['id'=>$id]
         ]);
     }
     public function searchArticleByDate(Request $request){
@@ -24,7 +24,7 @@ class SearchController extends Controller
         $articles=Article::whereRaw('DATE_FORMAT(articles.created_at, "%Y-%m")=?',[$date])->orderBy('articles.created_at', 'desc')->paginate();
         return view('welcome')->with([
             'articles' => $articles,
-            'search_param'=>'&date='.$date
+            'search_data'=>['date'=>$date]
         ]);
     }
     public function searchAriticleByTitle(Request $request){
@@ -33,7 +33,7 @@ class SearchController extends Controller
         $articles=Article::whereRaw('title like ?',["%$title%"])->orderBy('created_at','desc')->paginate();
               return view('welcome')->with([
             'articles' => $articles,
-            'search_param'=>'&title='.$title
+            'search_data'=>['title'=>$title]
              
         ]);
         

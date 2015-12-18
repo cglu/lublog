@@ -28,6 +28,6 @@ foreach ($articles as $article) {
 }
 ?>
 
-<?php echo $articles->render(); ?>
+<?php  if(isset($search_data)){echo $articles->appends($search_data)->render();}else{echo $articles->render();}?>
 @endsection
 
