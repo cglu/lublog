@@ -75,6 +75,7 @@ class ArticleController extends Controller
         }
         Redis::command('del',['welcome:articles:pages']);
         Cache::forget('self:rss');
+        Cache::forget('self:archive');
     }
 
     /**
