@@ -74,6 +74,7 @@ class ArticleController extends Controller
             }
         }
         Redis::command('del',['welcome:articles:pages']);
+        Cache::forget('self:rss');
     }
 
     /**
@@ -127,6 +128,7 @@ class ArticleController extends Controller
             'keywords'
         ]));
         if ($article) {
+            $this->clear_articels_cache();
             $message = "修改文章成功";
         } else {
             $message = "修改文章失败";

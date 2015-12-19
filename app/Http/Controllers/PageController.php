@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redis;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
+use PhpParser\Node\Stmt\Catch_;
 
 class PageController extends Controller
 {
@@ -18,18 +19,21 @@ class PageController extends Controller
      */
     public function welcome(Request $request)
     {
-       $page=$request->input('page',1);
-       $key="welcome:articles:".$page;
+        $page = $request->input('page', 1);
+        $key = "welcome:articles:" . $page;
         if (Cache::has($key)) {
             Log::info("从缓存中取得数据.");
             $articles = Cache::get($key);
-         } else {
-            Log::info("缓存中没有数据，从数据取得数据，并放入缓存中.");
+        } else {
+            Log::info("缓存中没有数据，从DB取得数据，并放入缓存中.");
             $articles = Article::orderBy('created_at', 'desc')->paginate();
             $expiresAt = Carbon::now()->addMinute(30);
             Cache::put($key, $articles, $expiresAt);
-            Redis::command('rpush',['welcome:articles:pages',$key]);
-         } 
+            Redis::command('rpush', [
+                'welcome:articles:pages',
+                $key
+            ]);
+        }
         return view('welcome')->with('articles', $articles);
     }
 
@@ -57,9 +61,14 @@ class PageController extends Controller
     public function feed()
     {
         $rss = \RSS::make();
-        if (! $rss->caching(10)) {
+        Log::info("开始构建RSS XML.");
+        if (Cache::has('self:rss')) {
             
+            Log::info("发现缓存的RSS XMLDOCUMENT。");
+            $rss = Cache::get("self:rss");
             // make channel.
+        } else {
+            Log::info("没有发现缓存中存在RSS XMLDOCUMENT。开始构建。");
             $rss->channel([
                 'title' => 'LuBlog',
                 'description' => '蝼蚁虽小，也有梦想。',
@@ -79,6 +88,8 @@ class PageController extends Controller
                     'link' => url('/article/' . $article->id)
                 ]);
             }
+            $expries_at = Carbon::now()->addMinutes(30);
+            Cache::put('self:rss', $rss, $expries_at);
         }
         
         // If you want to save the rss data to file.
