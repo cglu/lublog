@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use lublog\Article;
 use lublog\Categories;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
 
 class ArticleController extends Controller
 {
@@ -57,11 +59,21 @@ class ArticleController extends Controller
             'keywords'
         ]));
         if ($article) {
+            $this->clear_articels_cache();
             $message = "添加文章成功";
         } else {
             $message = "添加文章失败";
         }
         return redirect('/admin/article')->with('message', $message);
+    }
+    private function clear_articels_cache(){
+        $pages=Redis::command('lrange',['welcome:articles:pages',0,-1]);
+        foreach ($pages as $cache_key){
+            if (Cache::has($cache_key)) {
+                Cache::forget($cache_key);
+            }
+        }
+        Redis::command('del',['welcome:articles:pages']);
     }
 
     /**
@@ -131,6 +143,7 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         if (Article::destroy($id)) {
+            $this->clear_articels_cache();
             $message = "删除文章成功";
         } else {
             $message = "删除文章失败";

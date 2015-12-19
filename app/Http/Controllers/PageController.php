@@ -16,17 +16,20 @@ class PageController extends Controller
     /**
      * 用于博客主页文章的显示
      */
-    public function welcome()
+    public function welcome(Request $request)
     {
-        if (Cache::has('welcome.articles')) {
+       $page=$request->input('page',1);
+       $key="welcome:articles:".$page;
+        if (Cache::has($key)) {
             Log::info("从缓存中取得数据.");
-            $articles = Cache::get('welcome.articles');
-        } else {
+            $articles = Cache::get($key);
+         } else {
             Log::info("缓存中没有数据，从数据取得数据，并放入缓存中.");
             $articles = Article::orderBy('created_at', 'desc')->paginate();
             $expiresAt = Carbon::now()->addMinute(30);
-            Cache::put('welcome.articles', $articles, $expiresAt);
-        } 
+            Cache::put($key, $articles, $expiresAt);
+            Redis::command('rpush',['welcome:articles:pages',$key]);
+         } 
         return view('welcome')->with('articles', $articles);
     }
 
