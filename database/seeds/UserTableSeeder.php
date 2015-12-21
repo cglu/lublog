@@ -12,7 +12,7 @@ class UserTableSeeder extends Seeder
       
         User::create([
             'email' => 'shouhuni.xue@qq.com',
-            'password'=>bcrypt('luhu521xue.'),
+            'password'=>bcrypt('123456.'),
             'name'=>'Lu'
         ]);
     }
