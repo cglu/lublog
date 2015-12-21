@@ -12,5 +12,8 @@ class Article extends Model {
        
         return $this->hasOne('lublog\Categories','id','category_id');
     }
-    
+    public function getCreatedAtAttribute($value){
+     
+        return date('Y-m-d',strtotime($value));
+    }
 }

@@ -11,7 +11,7 @@ echo $article->description;
 		</a>
 	</h2>
 	<p class="blog-post-meta">
-		{{date('Y-m-d',strtotime($article->created_at))}} <a
+		{{ $article->created_at}} <a
 			href="{{url('/search/categories?id='.$article->category_id)}}">{{$article->categories->name}}</a>
 	</p>
 	{!! $article->content !!}

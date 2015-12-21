@@ -76,6 +76,7 @@ class ArticleController extends Controller
         Redis::command('del',['welcome:articles:pages']);
         Cache::forget('self:rss');
         Cache::forget('self:archive');
+        Cache::forget('self::categorie');
     }
 
     /**
@@ -87,7 +88,9 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article = Article::find($id);
+        
         if ($article) {
+            $article->increment('views');
             return view('article_detailed')->with('article', $article);
         }
     }

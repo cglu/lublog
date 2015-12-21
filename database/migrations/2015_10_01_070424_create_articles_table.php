@@ -22,6 +22,7 @@ class CreateArticlesTable extends Migration
             $table->text('description');
             $table->mediumText('content');
             $table->string('keywords')->default("");
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }

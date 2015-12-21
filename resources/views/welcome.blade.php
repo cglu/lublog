@@ -9,10 +9,9 @@ foreach ($articles as $article) {
 		</a>
 	</h2>
 	<p class="blog-post-meta">
-		{{date('Y-m-d',strtotime($article->created_at))}} <a
+		{{ $article->created_at }} <a
 			href="{{url('/search/categories?id='.$article->category_id)}}">{{$article->categories->name}}</a>
 	</p>
-					
 					<?php
     $body = $article->content;
     $summary = lublog\Lublog\ArticleProcess::getSummary($body);
