@@ -24,9 +24,9 @@
 
 5.php artion db:seed
 
-6.使用了redis作为缓存系统。
+6.使用了redis作为缓存系统。#session也使用redis驱动
 
-服务器代码更新:cmd下执行./sync.sh
+服务器代码更新:采用git pull的方式。项目内有./sync.sh脚本、执行后会自动从github.com上更新代码
 
 
 .env文件保存帐号信息、放在服务器上。不在代码库中。
