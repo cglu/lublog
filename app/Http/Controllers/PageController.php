@@ -19,6 +19,7 @@ class PageController extends Controller
      */
     public function welcome(Request $request)
     {
+      
         $page = $request->input('page', 1);
         $key = "welcome:articles:" . $page;
         if (Cache::has($key)) {

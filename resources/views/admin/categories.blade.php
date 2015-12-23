@@ -7,8 +7,8 @@
 	{{session('message')}}
 </div>
 @endif
-
-<form class="form-inline navbar-left" role="search"
+<div class="row">
+<form class=" navbar-left col-xs-12" role="search"
 	action="{{url('admin/categories')}}" method="post">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-group">
@@ -19,7 +19,7 @@
 	<button type="submit" class="btn btn-default">添加</button>
 	<span id="helpBlock" class="help-block"><?php echo $errors->first('name');?></span>
 </form>
-
+</div>
 <table class="table table-striped">
 	<thead>
 		<tr>

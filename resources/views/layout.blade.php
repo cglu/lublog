@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redis;
 
 ?>
 <!DOCTYPE html>
@@ -92,7 +93,12 @@ use Illuminate\Support\Facades\Session;
 
 		<div class="blog-header">
 			<h1 class="blog-title">LuBlog</h1>
-			<p class="lead blog-description">蝼蚁虽小，也有梦想。</p>
+			<p class="lead blog-description"><?php 
+			  $motto=Redis::command('SRANDMEMBER',['mottos']);
+			  if ($motto) {
+			      echo $motto;
+			  }
+			?></p>
 		</div>
 
 		<div class="row">

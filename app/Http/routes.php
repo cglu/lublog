@@ -42,7 +42,6 @@ Route::group([
     // 目前使用get方式，如果使用方法欺骗，则需要ajax。暂时不考虑。放到优化阶段
     Route::get('article/del/{id}', 'ArticleController@destroy');
     Route::resource('article', 'ArticleController');
-    
     Route::get('categories/del/{id}', 'CategoriesController@destroy');
     Route::resource('categories', 'CategoriesController', [
         'only' => [
@@ -50,4 +49,7 @@ Route::group([
             'store'
         ]
     ]);
+    Route::get('motto/del/{motto}', 'MottoController@destroy');
+    Route::resource('motto', 'MottoController');
+  
 });
