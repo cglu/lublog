@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Redis;
 <link rel="icon" href="{{url('favicon.ico')}}">
 
 <title>@section('title')@show- 灵感 - 来自生活的馈赠</title>
+ <script type="text/javascript">
+        document.domain = 'luhu.in'
+    </script>
 <!-- Bootstrap core CSS -->
 <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
