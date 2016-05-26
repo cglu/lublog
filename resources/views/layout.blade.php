@@ -124,15 +124,14 @@ use Illuminate\Support\Facades\Redis;
 @include('news')
 				@include('elsewhere')
 				<div class="sidebar-module">
-					<a href="{{url('/admin/article')}}">=>登陆到后台</a>
-				</div>
-<div class="sidebar-module">
-					微信扫一扫
-关注该公众号<br/>
-<img alt="" src="{{asset('/lu_weixin.jpg')}}">
+
+<h4>微信公众号</h4>
+<img alt="" src="{{asset('/images/luhu_weixin.jpg')}}">
 				</div>
 
-			</div>
+ <div class="sidebar-module">
+                                        <a href="{{url('/admin/article')}}">=>登陆到后台</a>
+                                </div>
 			<!-- /.blog-sidebar -->
 
 		</div>
