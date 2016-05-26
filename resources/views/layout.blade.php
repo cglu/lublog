@@ -126,7 +126,11 @@ use Illuminate\Support\Facades\Redis;
 				<div class="sidebar-module">
 					<a href="{{url('/admin/article')}}">=>登陆到后台</a>
 				</div>
-
+<div class="sidebar-module">
+					微信扫一扫
+关注该公众号<br/>
+<img alt="" src="{{asset('/lu_weixin.jpg')}}">
+				</div>
 
 			</div>
 			<!-- /.blog-sidebar -->
