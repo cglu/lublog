@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Redis;
 <link rel="icon" href="{{url('favicon.ico')}}">
 
 <title>@section('title')@show- 灵感 - 来自生活的馈赠</title>
- <script type="text/javascript">
+<script type="text/javascript">
         document.domain = 'luhu.in'
     </script>
 <!-- Bootstrap core CSS -->
@@ -96,12 +96,14 @@ use Illuminate\Support\Facades\Redis;
 
 		<div class="blog-header">
 			<h1 class="blog-title">LuBlog</h1>
-			<p class="lead blog-description"><?php 
-			  $motto=Redis::command('SRANDMEMBER',['mottos']);
-			  if ($motto) {
-			      echo $motto;
-			  }
-			?></p>
+			<p class="lead blog-description"><?php
+$motto = Redis::command('SRANDMEMBER', [
+    'mottos'
+]);
+if ($motto) {
+    echo $motto;
+}
+?></p>
 		</div>
 
 		<div class="row">
@@ -119,51 +121,48 @@ use Illuminate\Support\Facades\Redis;
 						<a class="rss" title="订阅" href="{{url('/feed')}}" target="_blank"></a>
 					</p>
 				</div>
-				@show @include('categories')
-@include('archives')
-@include('news')
+				@show @include('categories') @include('archives') @include('news')
 				@include('elsewhere')
 				<div class="sidebar-module">
 
-<h4>微信公众号</h4>
-<img alt="" src="{{asset('/images/luhu_weixin.jpg')}}">
+					<h4>微信公众号</h4>
+					<img alt="" src="{{asset('/images/luhu_weixin.jpg')}}">
 				</div>
 
- <div class="sidebar-module">
-                                        <a href="{{url('/admin/article')}}">=>登陆到后台</a>
-                                </div>
-			<!-- /.blog-sidebar -->
+				<div class="sidebar-module">
+					<a href="{{url('/admin/article')}}">=>登陆到后台</a>
+				</div>
+				<!-- /.blog-sidebar -->
+
+			</div>
+			<!-- /.row -->
 
 		</div>
-		<!-- /.row -->
-
-	</div>
-	<!-- /.container -->
-
-	<footer class="blog-footer">
-		<p>
-			<a href="http://www.miitbeian.gov.cn/">备案证书号：沪ICP备15044765号</a>
-
-		</p>
-		<p>
-			<a href="#">Back to top</a>
-		</p>
-	</footer>
+		</div>
+		<!-- /.container -->
+		<footer class="blog-footer">
+			<p>
+				<a href="http://www.miitbeian.gov.cn/">备案证书号：沪ICP备15044765号</a>
+			</p>
+			<p>
+				<a href="#">Back to top</a>
+			</p>
+		</footer>
 
 
-	<!-- Bootstrap core JavaScript
+		<!-- Bootstrap core JavaScript
     ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 
-	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="{{asset('js/ie10-viewport-bug-workaround.js')}}"></script>
-	<script
-		src="{{url('ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js')}}"></script>
+		<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="{{asset('js/ie10-viewport-bug-workaround.js')}}"></script>
+		<script
+			src="{{url('ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js')}}"></script>
 
-	<script>hljs.initHighlightingOnLoad();</script>
-	<script type="text/javascript">
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript">
 // create the back to top button
 $('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
 
@@ -184,7 +183,7 @@ $('a.back-to-top, a.simple-back-to-top').click(function() {
 	return false;
 });
 </script>
-	<style>
+		<style>
 .container iframe {
 	width: 100%;
 	margin: 0 0 1em;
@@ -195,5 +194,6 @@ $('a.back-to-top, a.simple-back-to-top').click(function() {
 	max-width: 700;
 }
 </style>
+
 </body>
 </html>
