@@ -114,7 +114,7 @@ if ($motto) {
 				@section('subject_des')
 				<div class="sidebar-module sidebar-module-inset">
 					<h4>联系博主</h4>
-					<p>
+					<p> 
 						QQ：1055429046</br>Email:shouhuni.xue@gmail.com
 					</p>
 					<p>
